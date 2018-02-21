@@ -28,6 +28,7 @@
 		<script type="text/javascript">
 				var script_root = "{{ request.script_root }}";
 		</script>
+		
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -121,6 +122,10 @@
 	</footer>
 
 	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/jquery.min.js"></script>
+	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/index-init.js"></script>
+	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/jquery.knob.min.js"></script>
+	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/jquery.ba-throttle-debounce.min.js"></script>
+	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/jquery.redcountdown.js"></script>
 	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/marked.min.js"></script>
 	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/bootstrap.bundle.min.js"></script>
 	<script src="{{ request.script_root }}/themes/{{ ctf_theme() }}/static/js/vendor/fontawesome-all.min.js"></script>

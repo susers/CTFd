@@ -1,4 +1,4 @@
-html, body, .container {
+html, body{
     font-family: 'Lato', 'LatoOffline', sans-serif;
 }
 
@@ -128,4 +128,15 @@ table > thead > tr > td {
 
 .cursor-help {
     cursor: help;
+}
+
+.container {
+    font-family: 'Lato', 'LatoOffline', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#rC_PE {
+    height: 130px;
 }
