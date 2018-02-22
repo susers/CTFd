@@ -1,3 +1,5 @@
+#!coding=utf8
+
 import os
 import re
 
@@ -38,7 +40,16 @@ def setup():
 
             # Index page
 
-            index = """<div id="rC_PE" class="redCountdownDemo"></div>""".format(request.script_root)
+            index = """<div style="display:flex;flex-direction:column;align-items: center;">
+
+<img src="themes/core/static/img/logo.jpg" style="width:250px;height:250px;margin:20px 0;"/>
+
+<div style="margin:10px 0;">
+    <h1>SUS</h1>
+</div>
+
+<h4>距离比赛开始还有:</h4>
+<div id="rC_PE" class="redCountdownDemo" style="margin: 10px 0;"></div>""".format(request.script_root)
 
             page = Pages(title=None, route='index', html=index, draft=False)
 

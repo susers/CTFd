@@ -128,7 +128,7 @@
 			}
 			
 			// Calculate seconds left and split into readable DHMS
-			OnlySecondsLeft = Settings.end - Settings.now;
+			OnlySecondsLeft = (Settings.end - Settings.now) / 1000;
 			SecsToDHMS();
 		}
 		
