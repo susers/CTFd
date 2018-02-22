@@ -48,7 +48,7 @@ def setup():
     <h1>SUS</h1>
 </div>
 
-<h4>距离比赛开始还有:</h4>
+<h4>Countdown</h4>
 <div id="rC_PE" class="redCountdownDemo" style="margin: 10px 0;"></div>""".format(request.script_root)
 
             page = Pages(title=None, route='index', html=index, draft=False)
