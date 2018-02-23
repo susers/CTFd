@@ -48,7 +48,7 @@ def setup():
     <h1>SUS</h1>
 </div>
 
-<h4>距离比赛开始还有:</h4>
+<h4>Next match in:</h4>
 <div id="rC_PE" class="redCountdownDemo" style="margin: 10px 0;"></div>""".format(request.script_root)
 
             page = Pages(title=None, route='index', html=index, draft=False)
@@ -122,24 +122,24 @@ def static_html(template):
         return render_template('page.html', content=markdown(page.html))
 
 
-@views.route('/teams', defaults={'page': '1'})
-@views.route('/teams/<int:page>')
-def teams(page):
-    if utils.get_config('workshop_mode'):
-        abort(404)
-    page = abs(int(page))
-    results_per_page = 50
-    page_start = results_per_page * (page - 1)
-    page_end = results_per_page * (page - 1) + results_per_page
+# @views.route('/teams', defaults={'page': '1'})
+# @views.route('/teams/<int:page>')
+# def teams(page):
+#     if utils.get_config('workshop_mode'):
+#         abort(404)
+#     page = abs(int(page))
+#     results_per_page = 50
+#     page_start = results_per_page * (page - 1)
+#     page_end = results_per_page * (page - 1) + results_per_page
 
-    if utils.get_config('verify_emails'):
-        count = Teams.query.filter_by(verified=True, banned=False).count()
-        teams = Teams.query.filter_by(verified=True, banned=False).slice(page_start, page_end).all()
-    else:
-        count = Teams.query.filter_by(banned=False).count()
-        teams = Teams.query.filter_by(banned=False).slice(page_start, page_end).all()
-    pages = int(count / results_per_page) + (count % results_per_page > 0)
-    return render_template('teams.html', teams=teams, team_pages=pages, curr_page=page)
+#     if utils.get_config('verify_emails'):
+#         count = Teams.query.filter_by(verified=True, banned=False).count()
+#         teams = Teams.query.filter_by(verified=True, banned=False).slice(page_start, page_end).all()
+#     else:
+#         count = Teams.query.filter_by(banned=False).count()
+#         teams = Teams.query.filter_by(banned=False).slice(page_start, page_end).all()
+#     pages = int(count / results_per_page) + (count % results_per_page > 0)
+#     return render_template('teams.html', teams=teams, team_pages=pages, curr_page=page)
 
 
 @views.route('/team', methods=['GET'])

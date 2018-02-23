@@ -57,11 +57,11 @@
 						{% endif %}
 					{% endfor %}
 
-					{% if not get_config('workshop_mode') %}
+					<!-- {% if not get_config('workshop_mode') %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ request.script_root }}/teams">Teams</a>
 						</li>
-					{% endif %}
+					{% endif %} -->
 					{% if not hide_scores() %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ request.script_root }}/scoreboard">Scoreboard</a>
