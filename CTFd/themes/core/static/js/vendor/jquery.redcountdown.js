@@ -102,7 +102,7 @@
 			Element.append('<div class="redCountdownWrapper"><div class="redCountdownDays"><input type="text" /><span class="redCountdownValue"><div></div><span></span></span></div><div class="redCountdownHours"><input type="text" /><span class="redCountdownValue"><div></div><span></span></span></div><div class="redCountdownMinutes"><input type="text" /><span class="redCountdownValue"><div></div><span></span></span></div><div class="redCountdownSeconds"><input type="text" /><span class="redCountdownValue"><div></div><span></span></span></div></div>');
 		
 			// Create jquery.knob instances
-			Element.find(".redCountdownDays input").knob($.extend({width: '100%', displayInput: false, readOnly: true, max: 365}, Settings.style.daysElement.gauge));
+			Element.find(".redCountdownDays input").knob($.extend({width: '100%', displayInput: false, readOnly: true, max: 31}, Settings.style.daysElement.gauge));
 			Element.find(".redCountdownHours input").knob($.extend({width: '100%', displayInput: false, readOnly: true, max: 24}, Settings.style.hoursElement.gauge));
 			Element.find(".redCountdownMinutes input").knob($.extend({width: '100%', displayInput: false, readOnly: true, max: 60}, Settings.style.minutesElement.gauge));
 			Element.find(".redCountdownSeconds input").knob($.extend({width: '100%', displayInput: false,  readOnly: true, max: 60}, Settings.style.secondsElement.gauge));
@@ -162,10 +162,10 @@
 			}
 			
 			// Replace DOM values
-			Element.find(".redCountdownDays input").val(365 - DaysLeft).trigger('change');
-			Element.find(".redCountdownHours input").val(24 - HoursLeft).trigger('change');
-			Element.find(".redCountdownMinutes input").val(60 - MinutesLeft).trigger('change');
-			Element.find(".redCountdownSeconds input").val(60 - SecondsLeft).trigger('change');
+			Element.find(".redCountdownDays input").val(DaysLeft).trigger('change');
+			Element.find(".redCountdownHours input").val(HoursLeft).trigger('change');
+			Element.find(".redCountdownMinutes input").val(MinutesLeft).trigger('change');
+			Element.find(".redCountdownSeconds input").val(SecondsLeft).trigger('change');
 			Element.find(".redCountdownDays .redCountdownValue > div").html(DaysLeft);
 			Element.find(".redCountdownHours .redCountdownValue > div").html(HoursLeft);
 			Element.find(".redCountdownMinutes .redCountdownValue > div").html(MinutesLeft);
