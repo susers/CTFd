@@ -1,5 +1,3 @@
-#!coding=utf8
-
 import os
 import re
 
@@ -39,7 +37,6 @@ def setup():
             admin.banned = True
 
             # Index page
-
             index = """<div style="display:flex;flex-direction:column;align-items: center;">
 
 <img src="themes/core/static/img/logo.jpg" style="width:250px;height:250px;margin:20px 0;"/>
@@ -48,8 +45,7 @@ def setup():
     <h1>SUS</h1>
 </div>
 
-
-<h4>Next match in:</h4>
+<h4>Countdown</h4>
 <div id="rC_PE" class="redCountdownDemo" style="margin: 10px 0;"></div>""".format(request.script_root)
 
             page = Pages(title=None, route='index', html=index, draft=False)
@@ -123,24 +119,24 @@ def static_html(template):
         return render_template('page.html', content=markdown(page.html))
 
 
-# @views.route('/teams', defaults={'page': '1'})
-# @views.route('/teams/<int:page>')
-# def teams(page):
-#     if utils.get_config('workshop_mode'):
-#         abort(404)
-#     page = abs(int(page))
-#     results_per_page = 50
-#     page_start = results_per_page * (page - 1)
-#     page_end = results_per_page * (page - 1) + results_per_page
+@views.route('/teams', defaults={'page': '1'})
+@views.route('/teams/<int:page>')
+def teams(page):
+    if utils.get_config('workshop_mode'):
+        abort(404)
+    page = abs(int(page))
+    results_per_page = 50
+    page_start = results_per_page * (page - 1)
+    page_end = results_per_page * (page - 1) + results_per_page
 
-#     if utils.get_config('verify_emails'):
-#         count = Teams.query.filter_by(verified=True, banned=False).count()
-#         teams = Teams.query.filter_by(verified=True, banned=False).slice(page_start, page_end).all()
-#     else:
-#         count = Teams.query.filter_by(banned=False).count()
-#         teams = Teams.query.filter_by(banned=False).slice(page_start, page_end).all()
-#     pages = int(count / results_per_page) + (count % results_per_page > 0)
-#     return render_template('teams.html', teams=teams, team_pages=pages, curr_page=page)
+    if utils.get_config('verify_emails'):
+        count = Teams.query.filter_by(verified=True, banned=False).count()
+        teams = Teams.query.filter_by(verified=True, banned=False).slice(page_start, page_end).all()
+    else:
+        count = Teams.query.filter_by(banned=False).count()
+        teams = Teams.query.filter_by(banned=False).slice(page_start, page_end).all()
+    pages = int(count / results_per_page) + (count % results_per_page > 0)
+    return render_template('teams.html', teams=teams, team_pages=pages, curr_page=page)
 
 
 @views.route('/team', methods=['GET'])
@@ -222,7 +218,7 @@ def profile():
             email = request.form.get('email').strip()
             website = request.form.get('website').strip()
             affiliation = request.form.get('affiliation').strip()
-            country = request.form.get('country').strip()
+            country = ''
 
             user = Teams.query.filter_by(id=session['id']).first()
 
